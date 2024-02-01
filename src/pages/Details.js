@@ -1,54 +1,79 @@
-import React from "react";
-import { MdAddShoppingCart } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+
+
 const Details = () => {
-    const param = useParams()
-    console.log(param)
+  const { id } = useParams();
+  // const id = param.id
+  const url = `https://fakestoreapi.com/products/${id}`;
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  console.log(data);
+  const fetchInfo = async () => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      setError(error.message || "An error occurred while fetching data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
+  if (loading) {
+    return (
+      <h1 className="font-sans text-2xl font-bold text-gray-800">
+        Please Wait...
+      </h1>
+    );
+  }
+
+  if (error) {
+    return <p className="text-red-600">Error: {error}</p>;
+  }
   return (
     <div>
       <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
           <div className="grid gap-8 md:grid-cols-2">
             {/* images - start */}
-            <div className="grid gap-4 lg:grid-cols-5">
-              <div className="relative overflow-hidden rounded-lg bg-gray-100 lg:col-span-4">
+            <div className="grid gap-4 lg:grid-cols-4">
+              <div className="relative object-cover overflow-hidden rounded-lg bg-gray-100 lg:col-span-4">
                 <img
-                  src="https://images.unsplash.com/flagged/photo-1571366992942-be878c7b10c0?auto=format&q=75&fit=crop&w=600"
+                  src={data.image}
                   loading="lazy"
-                  alt="Photo by Himanshu Dewangan"
+                  alt="Product Image"
                   className="h-full w-full object-cover object-center"
                 />
-                <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
-                  sale
-                </span>
               </div>
             </div>
             {/* content - start */}
             <div className="md:py-8">
               {/* name - start */}
               <div className="mb-2 md:mb-3">
-                <span className="mb-0.5 inline-block text-gray-500">
-                  Fancy Brand
-                </span>
                 <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
-                  Pullover with pattern
+                  {data.title}
                 </h2>
               </div>
               {/* name - end */}
               {/* description - start */}
               <p className="mb-6 flex items-center gap-3 md:mb-10">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a in
-                Virginia, looked up one of the more obscure Latin words,
-                consectetur, from a cites of the word in classical literature,
-                discovered the undoubtable source.
+                {data.description}
               </p>
               {/* description - end */}
               {/* rating - start */}
               <div className="mb-6 flex items-center gap-3 md:mb-10">
-                <div className="flex h-7 items-center gap-1 rounded-full bg-indigo-500 px-2 text-white">
-                  <span className="text-sm">4.2</span>
+                <div className="flex h-7 items-center gap-1 rounded-full bg-gray-500 px-2 text-white">
+                  <span className="text-sm">{data.rating.rate}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -59,7 +84,7 @@ const Details = () => {
                   </svg>
                 </div>
                 <span className="text-sm text-gray-500 transition duration-100">
-                  56 ratings
+                  {data.rating.count} ratings
                 </span>
               </div>
               {/* rating - end */}
@@ -67,7 +92,7 @@ const Details = () => {
               <div className="mb-4">
                 <div className="flex items-end gap-2">
                   <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                    $15.00
+                    ${data.price}
                   </span>
                 </div>
                 <span className="text-sm text-gray-500">
@@ -97,12 +122,15 @@ const Details = () => {
               {/* shipping notice - end */}
               {/* buttons - start */}
               <div className="flex">
-                <a
-                  href="#"
-                  className="inline-block flex-1 rounded-lg bg-indigo-500 px-2 py-2 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 sm:flex-none md:text-base"
+                <button
+                  onClick={() => {
+                // Pass the product object
+                    alert("Added to Cart!");
+                  }}
+                  className="inline-block flex-1 rounded-lg bg-gray-500 px-5 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:bg-gray-700 sm:flex-none md:text-base"
                 >
-                  <MdAddShoppingCart />
-                </a>
+                  Add to Cart
+                </button>
               </div>
               {/* buttons - end */}
             </div>

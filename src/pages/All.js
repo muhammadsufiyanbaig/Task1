@@ -1,14 +1,12 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-const Jewelery = () => {
-
-  // console.log(Id);
+const All = () => {
   const url = "https://fakestoreapi.com/products";
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-console.log(data);
+
   const fetchInfo = async () => {
     try {
       const response = await fetch(url);
@@ -16,14 +14,18 @@ console.log(data);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const jsonData = await response.json();
-      setData(jsonData);
+      if (jsonData && jsonData.length > 0) {
+        setData(jsonData);
+      } else {
+        throw new Error("Empty response or invalid JSON format.");
+      }
     } catch (error) {
       setError(error.message || "An error occurred while fetching data.");
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     fetchInfo();
   }, []);
@@ -39,16 +41,16 @@ console.log(data);
   if (error) {
     return <p className="text-red-600">Error: {error}</p>;
   }
-  // console.log(data);
+
   return (
     <div className="mt-10">
       <div className="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
-        {data.map((item) => {
-          if (item["category"] === "jewelery") {
-            return (
-              <Link to={`/product/` + item.id} key={item.id} className="group">
-      <div className="relative overflow-hidden bg-white rounded-md shadow-md group-hover:shadow-lg transition duration-300">
-        <img
+        {data.map((item) => (
+          <Link to={`/product/` + item.id} key={item.id} className="group">
+            <div
+              className="relative overflow-hidden bg-white rounded-md shadow-lg group-hover:shadow-xl transition duration-300"
+            
+            ><img
           className="w-full h-48 object-cover transition-transform transform group-hover:scale-105"
           src={item.image}
           alt="Product"
@@ -64,12 +66,11 @@ console.log(data);
         </div>
       </div>
     </Link>
-            );
-          }
-        })}
-      </div>
+  ))}
+</div>
+
     </div>
   );
 };
 
-export default Jewelery;
+export default All;
