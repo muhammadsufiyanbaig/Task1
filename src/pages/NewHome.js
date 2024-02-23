@@ -24,7 +24,7 @@ const NewHome = () => {
             <p className="font-medium text-gray-500 text-4xl">$ 29,987.25</p>
             <p className="font-normal text-green-600 text-3xl">+1.46%</p>
           </div>
-          <p className="font-medium mt-2 text-gray-500 text-lg">
+          <p className="font-medium mt-2 text-gray-500 text-xl">
             At 16:46:00 EST
           </p>
         </div>

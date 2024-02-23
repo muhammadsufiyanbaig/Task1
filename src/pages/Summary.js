@@ -45,6 +45,7 @@ const Summary = () => {
       td2: "$564,665,102,923",
     },
   ];
+ 
   return (
     <div className="h-full">
       <div className="relative py-20 px-4">
@@ -58,23 +59,26 @@ const Summary = () => {
                 <tr className="bg-white border border-b-2">
                   <th
                     scope="row"
-                    className="px-6 py-4 w-[210px] bg-red-100 font-bold text-gray-900 whitespace-nowrap"
+                    className="px-4 py-1 w-[210px] font-bold text-gray-900 whitespace-nowrap"
                   >
                     {item.th1}
                   </th>
-                  <td className="px-6 py-4 ">{item.td1}</td>
+                  <td className="px-4 py-1 w-[190px]">{item.td1}</td>
                   <th
                     scope="row"
-                    className="px-6 py-4 w-[210px]  bg-red-100 font-bold text-gray-900 whitespace-nowrap"
+                    className="px-4 py-1 w-[210px]  font-bold text-gray-900 whitespace-nowrap"
                   >
                     {item.th2}
                   </th>
-                  <td className="px-6 py-4 ">{item.td2}</td>
+                  <td className="px-4 py-1 w-[190px]">{item.td2}</td>
                 </tr>
               </tbody>
             </table>
           );
         })}
+      </div>
+      <div className="w-[60%]">
+        
       </div>
     </div>
   );
