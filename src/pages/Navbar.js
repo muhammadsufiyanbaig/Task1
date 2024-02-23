@@ -1,63 +1,67 @@
-import React, { useState } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-
+import React from 'react';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const location = useLocation();
 
   return (
-    <div className="bg-gray-800">
-      <nav className="p-4 flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="flex items-center">
-          <button
-            onClick={toggleMobileMenu}
-            className="text-gray-500 px-4 py-2 border-b-2 border-gray-400 rounded-md hover:bg-gray-700 hover:text-white mx-2 md:hidden"
-          >
-            ☰
-          </button>
-          <ul
-            className={`${
-              isMobileMenuOpen ? 'flex flex-col' : 'hidden'
-            } md:flex md:gap-x-5 md:mt-0`}
-          >
-            <li>
+    <div className="bg-transparent">
+      <nav className="p-4 flex flex-row justify-between items-center">
+        <div className="text-3xl font-black text-center text-gray-800 border-b border-gray-200">
+          <ul className="flex flex-wrap -mb-px  border-gray-800">
+            <li className="me-2 justify-between">
               <NavLink
-                to="/"
-                className="text-white hover:text-gray-300"
-                onClick={() => {setMobileMenuOpen(false)}}
+                to="/Summary"
+                className={`inline-block p-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                  location.pathname === '/Summary' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
+                }`}
+                aria-current={location.pathname === '/Summary' ? 'page' : undefined}
               >
-                Home
+                Summary
+              </NavLink>
+            </li>
+            <li className="me-2">
+              <NavLink
+                to="/Markets"
+                className={`inline-block p-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                  location.pathname === '/Markets' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
+                }`}
+                aria-current={location.pathname === '/Markets' ? 'page' : undefined}
+              >
+                Markets
+              </NavLink>
+            </li>
+            <li className="me-2">
+              <NavLink
+                to="/Social"
+                className={`inline-block p-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                  location.pathname === '/Social' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
+                }`}
+                aria-current={location.pathname === '/Social' ? 'page' : undefined}
+              >
+                Social
+              </NavLink>
+            </li>
+            <li className="me-2">
+              <NavLink
+                to="/EducationalCourses"
+                className={`inline-block p-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                  location.pathname === '/EducationalCourses' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
+                }`}
+                aria-current={location.pathname === '/EducationalCourses' ? 'page' : undefined}
+              >
+                Educational Courses
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/about"
-                className="text-white hover:text-gray-300"
-                onClick={() => setMobileMenuOpen(false)}
+                to="/AnalyticsReports"
+                className={`inline-block p-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                  location.pathname === '/AnalyticsReports' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
+                }`}
+                aria-current={location.pathname === '/AnalyticsReports' ? 'page' : undefined}
               >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/product"
-                className="text-white hover:text-gray-300"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Product
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className="text-white hover:text-gray-300"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
+                Analytics Reports
               </NavLink>
             </li>
           </ul>
