@@ -30,8 +30,8 @@ const NewHome = () => {
         </div>
         <div className="flex flex-col items-end md:w-1/2">
           <div class="md:ml-40 flex flex-col md:flex-row md:gap-20 ">
-            <div class="space-x-5 flex flex-wrap md:flex-nowrap">
-              <button class="py-2 px-3 text-xl font-semibold rounded-full bg-blue-500 text-white flex items-center">
+            <div class="space-x-5 flex ">
+              <button class="py-2 px-5 text-xl font-semibold rounded-full bg-blue-500 text-white flex items-center">
                 <FaStar class="mr-3" />
                 Follow
               </button>
