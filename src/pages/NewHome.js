@@ -29,37 +29,37 @@ const NewHome = () => {
           </p>
         </div>
         <div className="flex flex-col items-end md:w-1/2">
-          <div class="md:ml-40 flex flex-col md:flex-row md:gap-20 ">
-            <div class="space-x-5 flex ">
+          <div class="ml-32 flex flex-row gap-10 ">
+            <div class="space-x-3 flex ">
               <button class="py-2 px-5 text-xl font-semibold rounded-full bg-blue-500 text-white flex items-center">
                 <FaStar class="mr-3" />
                 Follow
               </button>
-              <button class="py-1 px-3 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
+              <button class="py-1 px-2 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
                 <IoEyeOutline class="mr-3" />
                 Watchlist
               </button>
-              <button class="py-1 px-3 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
+              <button class="py-1 px-2 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
                 <IoBagHandleSharp class="mr-3" />
                 Portfolio
               </button>
             </div>
-            <div class="space-x-5 flex flex-wrap md:flex-nowrap mt-4 md:mt-0">
-              <button class="py-1 px-3 text-base rounded-lg bg-gray-800 text-white flex items-center">
+            <div class="space-x-3 flex flex-wrap md:flex-nowrap mt-4 md:mt-0">
+              <button class="py-1 px-2 text-base rounded-lg bg-gray-800 text-white flex items-center">
                 <IoBagHandleSharp class="mr-3" />
                 Buy/Sell
               </button>
-              <button class="py-1 px-3 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
+              <button class="py-1 px-2 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
                 <IoBagHandleSharp class="mr-3" />
                 Stake
               </button>
-              <button class="py-1 px-3 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
+              <button class="py-1 px-2 text-base rounded-lg bg-gray-800 text-white flex items-center mt-4 md:mt-0">
                 <IoBagHandleSharp class="mr-3" />
                 Lend
               </button>
             </div>
           </div>
-
+<div className="">
           <p className="font-normal mt-10 text-gray-500 text-lg">
             <b>Bitcoin (BTC)</b> is a cryptocurrency, a virtual currency
             designed to act as money and a form of payment outside the control
@@ -68,6 +68,8 @@ const NewHome = () => {
             blockchain miners for the work done to verify transactions and can
             be purchased on several exchanges.
           </p>
+          
+</div>
         </div>
       </div>
     </div>

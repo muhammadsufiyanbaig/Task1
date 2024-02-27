@@ -9,7 +9,7 @@ import Social from "./pages/Social";
 import Summary from "./pages/Summary";
 export default function App() {
   return (
-    <div className="bg-gray-100 text-2xl h-full">
+    <div className="bg-gray-100 text-2xl h-full px-8 py-8">
       <NewHome/>
       <Routes>
         <Route path="/" element={<Navbar />}>

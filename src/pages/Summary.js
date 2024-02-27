@@ -108,20 +108,20 @@ const Summary = () => {
   }, [totalAmount]);
 
   return (
-    <div className="mt-5 h-full px-4">
+    <div className="h-full mt-14 px-4">
       <div className="flex justify-end space-x-3 mb-4">
         {buttons.map((item, index) => (
           <button
             key={index}
-            className="py-2 px-4 bg-white rounded-sm shadow-sm"
+            className="py-1 px-2 text-lg bg-white rounded-md shadow-sm"
           >
             {item}
           </button>
         ))}
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start">
         <div className="">
-          <div className="relative py-14 ">
+          <div className="relative pb-14">
             {data.map((item, index) => {
               return (
                 <table
@@ -196,8 +196,8 @@ const Summary = () => {
             </div>
           </div>
         </div>
-        <div className="flex ml-10 bg-white px-1 py-2 w-2/4 h-full mt-10 ">
-          <canvas ref={chartRef} className="w-20 h-20"></canvas>
+        <div className="flex ml-10 bg-white w-2/4 h-full  ">
+          <canvas ref={chartRef} width={500} height={360} ></canvas>
         </div>
       </div>
     </div>
