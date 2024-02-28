@@ -6,13 +6,13 @@ const Navbar = () => {
 
   return (
     <div className="bg-transparent w-auto">
-      <nav className="px-11 flex flex-row justify-center items-center">
-        <div className="text-3xl font-black text-center text-gray-800 border-b border-gray-200">
-          <ul className="flex justify-between -mb-px border-gray-800">
-            <li className="">
+      <nav className="px-4 md:px-10 flex justify-center items-center">
+        <div className="text-xl md:text-3xl font-black text-center text-gray-800 ">
+          <ul className="flex justify-center -mb-px border-gray-800 flex-wrap">
+            <li>
               <NavLink
                 to="/Summary"
-                className={`inline-block px-11 py-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                className={`inline-block md:px-10 md:py-4 px-3 py-2  border-b-8 rounded-t-lg hover:text-gray-600 ${
                   location.pathname === '/Summary' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
                 }`}
                 aria-current={location.pathname === '/Summary' ? 'page' : undefined}
@@ -20,10 +20,10 @@ const Navbar = () => {
                 Summary
               </NavLink>
             </li>
-            <li className="">
+            <li>
               <NavLink
                 to="/Markets"
-                className={`inline-block px-11 py-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                className={`inline-block md:px-10 md:py-4 px-3 py-2 border-b-8 rounded-t-lg hover:text-gray-600 ${
                   location.pathname === '/Markets' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
                 }`}
                 aria-current={location.pathname === '/Markets' ? 'page' : undefined}
@@ -31,10 +31,10 @@ const Navbar = () => {
                 Markets
               </NavLink>
             </li>
-            <li className="">
+            <li>
               <NavLink
                 to="/Social"
-                className={`inline-block px-11 py-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                className={`inline-block md:px-10 md:py-4 px-3 py-2 border-b-8 rounded-t-lg hover:text-gray-600 ${
                   location.pathname === '/Social' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
                 }`}
                 aria-current={location.pathname === '/Social' ? 'page' : undefined}
@@ -42,10 +42,10 @@ const Navbar = () => {
                 Social
               </NavLink>
             </li>
-            <li className="">
+            <li>
               <NavLink
                 to="/EducationalCourses"
-                className={`inline-block px-11 py-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                className={`inline-block md:px-10 md:py-4 px-3 py-2 border-b-8 rounded-t-lg hover:text-gray-600 ${
                   location.pathname === '/EducationalCourses' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
                 }`}
                 aria-current={location.pathname === '/EducationalCourses' ? 'page' : undefined}
@@ -56,7 +56,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/AnalyticsReports"
-                className={`inline-block px-11 py-4 border-b-8 rounded-t-lg hover:text-gray-600 ${
+                className={`inline-block md:px-10 md:py-4 px-3 py-2 border-b-8 rounded-t-lg hover:text-gray-600 ${
                   location.pathname === '/AnalyticsReports' ? 'text-blue-500 border-blue-500' : 'border-gray-800'
                 }`}
                 aria-current={location.pathname === '/AnalyticsReports' ? 'page' : undefined}

@@ -60,16 +60,9 @@ const Summary = () => {
   ];
   const buttons = ["1 Yr", "90 D", "30 D", "7 D", "24 H"];
   const [totalAmount, setTotalAmount] = useState(0);
-  const data1 = [26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000];
-
-  useEffect(() => {
-    let sum = 0;
-    data1.forEach(item => {
-      const value = item;
-      sum += value;
-    });
-    setTotalAmount(sum);
-  }, [data1]);
+  const data1 = [
+    26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000,
+  ];
 
   const chartRef = useRef(null);
 
@@ -86,7 +79,6 @@ const Summary = () => {
         datasets: [
           {
             data: data1,
-            backgroundColor: "#006400",
             borderColor: "#006400",
             borderWidth: 3,
             pointRadius: 5,
@@ -96,7 +88,7 @@ const Summary = () => {
       options: {
         scales: {
           y: {
-            beginAtZero: true,
+            beginAtZero: false,
           },
         },
       },
@@ -109,7 +101,7 @@ const Summary = () => {
 
   return (
     <div className="h-full mt-14 px-4">
-      <div className="flex justify-end space-x-3 mb-4">
+      <div className="flex justify-center md:justify-end space-x-3 mb-4">
         {buttons.map((item, index) => (
           <button
             key={index}
@@ -119,85 +111,127 @@ const Summary = () => {
           </button>
         ))}
       </div>
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col lg:flex-row md:justify-center justify-between md:items-start items-center">
         <div className="">
-          <div className="relative pb-14">
+          <div className="relative pb-14 hidden md:block">
             {data.map((item, index) => {
               return (
-                <table
-                  key={index}
-                  className=" text-left text-gray-500"
-                >
-                  <tbody>
+               <>
+               <table key={index} className=" text-left text-gray-500">
+                  <tbody className="w-auto">
                     <tr className="bg-white border border-b-2">
                       <th
                         scope="row"
-                        className="text-lg  w-[210px] font-bold text-gray-900 "
+                        className="text-sm md:text-lg w-1/2 md:w-[210px] font-bold text-gray-900 "
                       >
                         {item.th1}
                       </th>
-                      <td className=" text-lg  w-[190px]">{item.td1}</td>
+                      <td className="text-sm md:text-lg w-1/2  md:w-[190px]">
+                        {item.td1}
+                      </td>
                       <th
                         scope="row"
-                        className="text-lg w-[210px]  font-bold text-gray-900 "
+                        className="text-sm md:text-lg w-1/2 md:w-[210px]  font-bold text-gray-900 "
                       >
                         {item.th2}
                       </th>
-                      <td className="text-lg w-[190px]">{item.td2}</td>
+                      <td className="text-sm md:text-lg w-1/2 md:w-[190px]">
+                        {item.td2}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
+                </>
               );
             })}
           </div>
-          <div className=" space-y-3 ">
-            <div className="flex space-x-5">
-              <p className="font-bold py-1 text-lg px-2 bg-white rounded-sm shadow-sm">
-                Webstie:
-              </p>
-              <p className="py-1 px-2 bg-white text-lg rounded-sm shadow-sm">
-                {webstie[0]}
-              </p>
-            </div>
-            <div className="flex space-x-5">
-              <p className="font-bold py-1 px-2 text-lg bg-white rounded-sm shadow-sm">
-                Explorers:
-              </p>
-              <p className="py-1 px-2 text-lg bg-white rounded-sm shadow-sm">
-                {explorers[0]}
-              </p>
-              <p className="py-1 text-lg px-2 bg-white rounded-sm shadow-sm">
-                {explorers[1]}
-              </p>
-            </div>
-            <div className="flex space-x-5">
-              <p className="font-bold py-1 text-lg px-2 bg-white rounded-sm shadow-sm">
-                Wallets:
-              </p>
-              {wallets.map((item, index) => (
-                <div key={index}>
-                  <p className="py-1 px-2 bg-white text-lg rounded-sm shadow-sm">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="flex space-x-5">
-              <p className="font-bold py-1 px-2 bg-white text-lg rounded-sm shadow-sm">
-                Community:
-              </p>
-              {community.map((item, index) => (
-                <div key={index}>
-                  <p className="text-lg py-1 px-2 bg-white rounded-sm shadow-sm">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="relative pb-14 block md:hidden">
+  {data.map((item, index) => {
+    return (
+      <table key={index} className="text-left text-gray-500 md:hidden">
+        {/* Add md:hidden to hide the table on screens larger than mobile */}
+        <tbody className="w-auto">
+          <tr className="bg-white border border-b-2">
+            <th
+              scope="row"
+              className="px-2 py-1 text-sm  w-[185px]  font-bold text-gray-900"
+            >
+              {item.th1}
+            </th>
+            <td className="px-2 py-1 text-sm w-[135px] ">
+              {item.td1}
+            </td>
+          </tr>
+          <tr className="bg-white border border-b-2">
+            <th
+              scope="row"
+              className="px-2 py-1 text-sm w-[185px] font-bold text-gray-900"
+            >
+              {item.th2}
+            </th>
+            <td className="px-2 py-1 text-sm  w-[135px] ">
+              {item.td2}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  })}
+</div>
+
+          <div class="space-y-3">
+  <div class="flex flex-col md:flex-row md:space-x-5">
+    <p class="font-bold py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      Website:
+    </p>
+    <p class="py-1 px-2 bg-white text-sm md:text-lg rounded-sm shadow-sm">
+      {webstie[0]}
+    </p>
+  </div>
+  <div class="flex flex-col md:flex-row md:space-x-5">
+    <p class="font-bold py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      Explorers:
+    </p>
+    <p class="py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      {explorers[0]}
+    </p>
+    <p class="py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      {explorers[1]}
+    </p>
+  </div>
+  <div class="flex flex-col md:flex-row md:space-x-5">
+    <p class="font-bold py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      Wallets:
+    </p>
+    <div class="flex flex-col md:flex-row md:space-x-2">
+      {wallets.map((item, index) => (
+      <div key={index}>
+        <p class="py-1 px-2 bg-white text-sm md:text-lg rounded-sm shadow-sm">
+          {item}
+        </p>
+      </div>
+      ))}
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row md:space-x-5">
+    <p class="font-bold py-1 px-2 text-sm md:text-lg bg-white rounded-sm shadow-sm">
+      Community:
+    </p>
+    <div class="flex flex-col md:flex-row md:space-x-2">
+      {community.map((item, index) => (
+      <div key={index}>
+        <p class="py-1 px-2 bg-white text-sm md:text-lg rounded-sm shadow-sm">
+          {item}
+        </p>
+      </div>
+      ))}
+    </div>
+  </div>
+</div>
+
         </div>
-        <div className="flex ml-10 bg-white w-2/4 h-full  ">
-          <canvas ref={chartRef} width={500} height={360} ></canvas>
+        <div className="md:ml-10 mt-6 md:mt-0 bg-white w-[100%] md:w-2/4 ">
+          <canvas ref={chartRef} width={500} height={360}></canvas>
         </div>
       </div>
     </div>
